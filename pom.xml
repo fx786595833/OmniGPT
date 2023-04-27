@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <!-- 基本信息 -->
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.example.project</groupId>
+    <artifactId>my-project</artifactId>
+    <version>1.0.0</version>
+    <name>My Project</name>
+    <description>A sample project</description>
+    <url>https://github.com/example/my-project</url>
+    <packaging>jar</packaging>
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+        </license>
+    </licenses>
+
+    <!-- 开发人员信息 -->
+    <developers>
+        <developer>
+            <id>tommy</id>
+            <name>tommy</name>
+            <email>tbwork1989@163.com</email>
+            <url>tbwork.org</url>
+            <roles>
+                <role>founder</role>
+            </roles>
+        </developer>
+    </developers>
+
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <scm>
+        <connection>scm:git:git://github.com/tbwork/OmniGPT.git</connection>
+        <developerConnection>scm:git:ssh://github.com/tbwork/OmniGPT.git</developerConnection>
+        <url>https://github.com/tbwork/OmniGPT</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <issueManagement>
+        <system>GitHub Issues</system>
+        <url>https://github.com/username/repository/issues</url>
+    </issueManagement>
+
+    <ciManagement>
+        <system>Travis CI</system>
+        <url>https://travis-ci.com/github/username/repository</url>
+    </ciManagement>
+
+
+    <!-- 依赖管理 -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>cn.lanehub.ai</groupId>
+                <artifactId>OmniGPT</artifactId>
+                <version>1.0.0</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- 依赖 -->
+    <dependencies>
+
+
+    </dependencies>
+
+    <!-- 插件 -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>javadoc</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <show>private</show>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>
