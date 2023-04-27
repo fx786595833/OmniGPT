@@ -1,45 +1,11 @@
-package cn.lanehub.ai.core.spell.impl;
-
-import cn.lanehub.ai.core.spell.IMagicSpell;
-import cn.lanehub.ai.core.spell.IMagicSpellResolver;
-import cn.lanehub.ai.exceptions.Assert;
-import cn.lanehub.ai.exceptions.SpellNotFoundException;
+package cn.lanehub.ai.util;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class MagicSpellResolver implements IMagicSpellResolver {
-
-
-    private static List<IMagicSpell> supportedMagicSpells= new ArrayList<>();
-    static{
-        supportedMagicSpells.add(new CallSpell());
-        supportedMagicSpells.add(new SearchSpell());
-        supportedMagicSpells.add(new ViewSpell());
-        supportedMagicSpells.add(new SqlSpell());
-        supportedMagicSpells.add(new MatchSpell());
-    }
-
-
-    @Override
-    public IMagicSpell resolve(String spellText) {
-
-        List<String> spellParts = getSpellParts(spellText);
-
-        String spellName = spellParts.get(0).toLowerCase();
-        Assert.isNotBlank(spellName, "Spell name");
-
-        for (IMagicSpell spell : supportedMagicSpells){
-            if(spell.fit(spellName)){
-                return spell;
-            }
-        }
-
-        throw new SpellNotFoundException(spellParts.get(0));
-    }
-
+public class SpellUtil {
 
 
     public static List<String> getSpellParts(String commandString) {
@@ -68,4 +34,5 @@ public class MagicSpellResolver implements IMagicSpellResolver {
         List<String> parsedArgs = getSpellParts(commandString);
         System.out.println(parsedArgs);
     }
+
 }
