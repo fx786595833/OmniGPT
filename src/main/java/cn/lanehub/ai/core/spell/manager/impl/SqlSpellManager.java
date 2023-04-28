@@ -7,9 +7,7 @@ import java.util.List;
 
 public class SqlSpellManager extends AbstractSpellManager {
 
-    public static final ISpellManager INSTANCE = new SqlSpellManager();
-
-    private SqlSpellManager() {
+    public SqlSpellManager() {
         super("sql");
     }
 

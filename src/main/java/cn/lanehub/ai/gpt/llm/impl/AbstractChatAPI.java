@@ -1,8 +1,8 @@
 package cn.lanehub.ai.gpt.llm.impl;
 
 import cn.lanehub.ai.core.spell.manager.ISpellManager;
-import cn.lanehub.ai.core.spell.resolve.IMagicSpellResolver;
-import cn.lanehub.ai.core.spell.resolve.impl.MagicSpellResolver;
+import cn.lanehub.ai.core.spell.book.IMagicSpellBook;
+import cn.lanehub.ai.core.spell.book.impl.MagicSpellBook;
 import cn.lanehub.ai.gpt.llm.IChatAPI;
 import cn.lanehub.ai.gpt.model.Chat;
 import cn.lanehub.ai.gpt.model.Message;
@@ -15,13 +15,13 @@ import java.util.regex.Pattern;
 public abstract class AbstractChatAPI implements IChatAPI {
 
 
-    private static final IMagicSpellResolver resolver = MagicSpellResolver.INSTANCE;
+    private static final IMagicSpellBook resolver = MagicSpellBook.INSTANCE;
 
     @Override
     public Message generate(Chat chat) {
 
+        // 执行AI生成结果
         Message result = doGenerate(chat);
-
 
         // 如果生成的内容中包含咒语，那么下一条一定是以System视角追加的一条咒语结果数据。
         List<String> spells = findSpells(result.getContent());
@@ -37,7 +37,8 @@ public abstract class AbstractChatAPI implements IChatAPI {
 
             chat.appendMessage(new Message("system", sb.toString()));
 
-            return doGenerate(chat);
+            // 咒语的返回用户不可见，AI需要自己加工后再次对用户生成。
+            return generate(chat);
         }
         return result;
     }

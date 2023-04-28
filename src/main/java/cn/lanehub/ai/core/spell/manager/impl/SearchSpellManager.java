@@ -8,10 +8,7 @@ import java.util.List;
 public class SearchSpellManager extends AbstractSpellManager {
 
 
-    public static final ISpellManager INSTANCE = new SearchSpellManager();
-
-
-    private SearchSpellManager() {
+    public SearchSpellManager() {
         super("search");
     }
 

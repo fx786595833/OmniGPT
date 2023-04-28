@@ -9,9 +9,7 @@ public class MatchSpellManager extends AbstractSpellManager {
 
 
 
-    public static final ISpellManager INSTANCE = new MatchSpellManager();
-
-    private MatchSpellManager() {
+    public MatchSpellManager() {
         super("match");
     }
 

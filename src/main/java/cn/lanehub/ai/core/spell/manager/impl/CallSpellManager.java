@@ -19,8 +19,6 @@ import java.util.Map;
  */
 public class CallSpellManager extends AbstractSpellManager {
 
-    public static final ISpellManager INSTANCE = new CallSpellManager();
-
     private static final IExecutor executor = CallExecutor.INSTANCE;
 
     private final static String spellName = "call";
@@ -28,7 +26,7 @@ public class CallSpellManager extends AbstractSpellManager {
     private static final Map<String, CallSpell> callSpellMap = new HashMap<String, CallSpell>();
 
 
-    private CallSpellManager() {
+    public CallSpellManager() {
         super("call");
     }
 

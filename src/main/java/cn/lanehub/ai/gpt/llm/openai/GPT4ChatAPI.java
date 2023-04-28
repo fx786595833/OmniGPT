@@ -8,6 +8,11 @@ import cn.lanehub.ai.gpt.model.Message;
 public class GPT4ChatAPI extends AbstractChatAPI {
 
 
+    public static final IChatAPI INSTANCE = new GPT4ChatAPI();
+
+    private GPT4ChatAPI(){}
+
+
     @Override
     protected Message doGenerate(Chat chat) {
 
